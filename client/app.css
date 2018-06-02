@@ -14,3 +14,21 @@ body {
   margin: 0;
   padding: 36px 48px;
 }
+
+#seed-database {
+  background-color: #ffa726;
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.025rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 24px;
+}
+
+#seed-database:active {
+  background-color: #c77800;
+}
