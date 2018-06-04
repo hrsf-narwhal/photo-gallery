@@ -45,7 +45,7 @@ s3.listObjectsV2({
 
 			const key = params.Key.split('/');
 			const product_id = key[1];
-			const image_url = path.join(config.staticWebsiteUrl, url.parse(theUrl).pathname);
+			const image_url = url.resolve(config.staticWebsiteUrl, url.parse(theUrl).pathname);
 			const image_name = key[2];
 
 			s3ImageSize(s3, config.bucket, params.Key, (err, dimensions, bytesRead) => {
