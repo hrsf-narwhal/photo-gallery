@@ -16,7 +16,18 @@ const publicPath = path.resolve(__dirname, '../public');
 app.use(express.static( publicPath ));
 app.use(express.json());
 
-// const pool = mysql.createPool(mysqlConfig);
+const pool = mysql.createPool(mysqlConfig);
+
+app.get('/images/:pid', (req, res) => {
+	const query = `SELECT image_url FROM images WHERE product_id='${req.params.pid}'`;
+	pool.getConnection((err, connection) => {
+		connection.query(query, (err, results) => {
+			if (err) throw err;
+			res.status(200).json( results );
+			connection.release();
+		});
+	}); // pool
+});
 
 const port = 3001;
 app.listen(port, console.log(`Listening on port ${port}...`));
