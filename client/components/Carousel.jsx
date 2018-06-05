@@ -8,8 +8,9 @@ import Slide from './Slide.jsx';
 
 const Container = styled.div`
   background-color: #f5f5f5;
-  max-width: 570px;
+  max-width: 100%;
   position: relative;
+  width: 570px;
 
   &::after {
     content: '';
@@ -29,8 +30,8 @@ const Carousel = (props) => {
   return (
     <Container id="carousel">
       <Slide images={props.images} current={props.current} next={props.next}/>
-      <Arrow className="arrow-previous" action={(e) => props.previous(e)} glyph="P" />
-      <Arrow className="arrow-next" action={(e) => props.next(e)} glyph="N" />
+      <Arrow className="arrow-previous" action={(e) => props.previous(e)} glyph="-" />
+      <Arrow className="arrow-next" action={(e) => props.next(e)} glyph="+" />
     </Container>
   );
 }
