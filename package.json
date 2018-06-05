@@ -7,6 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "test": "jest",
     "build": "webpack -s"
   },
   "dependencies": {
@@ -27,8 +28,11 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.10.2",
