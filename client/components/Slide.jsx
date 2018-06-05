@@ -9,11 +9,14 @@ const SlideContainer = styled.div`
 	font-size: 0;
 	height: 100%;
 	position: absolute;
+	width: 100%;
 `;
 
 const Img = styled.img`
 	display: block;
 	flex-grow: 0;
+	height: auto;
+	max-width: 100%;
 `;
 
 const Slide = (props) => {
