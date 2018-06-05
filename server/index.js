@@ -14,6 +14,7 @@ const mysqlConfig = require('../config/database.js');
 const app = express();
 const publicPath = path.resolve(__dirname, '../public');
 app.use(express.static( publicPath ));
+app.use('/listing/:pid', express.static( publicPath ));
 app.use(express.json());
 
 const pool = mysql.createPool(mysqlConfig);
