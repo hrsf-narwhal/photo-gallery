@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.pid = window.location.pathname.match(/\/[\w]+\/([\d]+)/)[1];
     this.state = {
       images: [],
       current: 0
@@ -23,7 +24,7 @@ class App extends React.Component {
   }
 
   fetchImages() {
-    fetch('/images/1029', {
+    fetch('/images/' + this.pid, {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
@@ -31,7 +32,9 @@ class App extends React.Component {
     })
     .then( response => response.json() )
     .then( response => {
-      console.log(response)
+
+      // console.log(response)
+
       this.setState({
         images: response
       });
