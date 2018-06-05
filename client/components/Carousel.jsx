@@ -7,9 +7,16 @@ import Arrow from './Arrow.jsx';
 import Slide from './Slide.jsx';
 
 const Container = styled.div`
-  display: inline-block;
+  background-color: #f5f5f5;
+  max-width: 570px;
   position: relative;
-  vertical-align: top;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+    width: 100%;
+  }
 `;
 
 const Carousel = (props) => {
@@ -21,7 +28,7 @@ const Carousel = (props) => {
 
   return (
     <Container id="carousel">
-      <Slide images={props.images} current={props.current} />
+      <Slide images={props.images} current={props.current} next={props.next}/>
       <Arrow className="arrow-previous" action={(e) => props.previous(e)} glyph="P" />
       <Arrow className="arrow-next" action={(e) => props.next(e)} glyph="N" />
     </Container>
