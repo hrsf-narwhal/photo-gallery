@@ -61,7 +61,6 @@ class Slide extends React.Component {
 
 	componentDidUpdate() {
 		const img = document.getElementById('slide').querySelector('img');
-		img.classList.add('delay');
 		const loadImage = (img) => {
 			img.setAttribute('src', img.getAttribute('data-src'));
 			img.onload = () => {
@@ -79,7 +78,7 @@ class Slide extends React.Component {
 		if ( this.props.images.length > 0 ) {
 			return (
 				<SlideDiv id="slide" className={this.orientation} onClick={(e) => this.props.next(e)}>
-					<Img key={this.props.images[ this.props.current ].image_url} data-src={this.props.images[ this.props.current ].image_url} />
+					<Img key={this.props.images[ this.props.current ].image_url} data-src={this.props.images[ this.props.current ].image_url} className="delay" />
 				</SlideDiv>
 			);
 		}
