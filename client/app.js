@@ -70,9 +70,12 @@ class App extends React.Component {
 
   handleThumbnailClick(event) {
     event.preventDefault();
-    this.setState({
-      current: parseInt(event.target.getAttribute('data-idx'),10)
-    });
+    const idx = parseInt(event.target.getAttribute('data-idx'),10);
+    if ( idx !== this.state.current ) {
+      this.setState({
+        current: idx
+      });  
+    }
   }
 
   render() {
