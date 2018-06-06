@@ -32,10 +32,14 @@ const Thumbnails = (props) => {
 
 	const thumbnails = props.images.map( (image, i) => {
 		const url = image.image_url.match(/(http:\/\/[^\/]*)(.*)/);
-		const resize = '/100x100xWidthHeight';
-		const imgSrc = url[1] + resize + url[2];
+		const sizes = ['/50x50xWidthHeight', '/100x100xWidthHeight', '/150x150xWidthHeight'];
+		const src = url[1] + sizes[0] + url[2];
+		const srcset = sizes.map( (size, i) => url[1] + size + url[2] + ' ' + (i+1) + 'x').join(', ');
+		console.log(srcset);
 		return (
-			<Thumbnail key={i} onClick={(e) => props.action(e)}><Img src={imgSrc} data-idx={i} /></Thumbnail>
+			<Thumbnail key={i} onClick={(e) => props.action(e)}>
+				<Img src={src} srcSet={srcset} data-idx={i} />
+			</Thumbnail>
 		);
 	});
 
