@@ -16,6 +16,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleLeftClick = this.handleLeftClick.bind(this);
+    this.handleRightClick = this.handleRightClick.bind(this);
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
+
     this.pid = window.location.pathname.match(/\/[\w]+\/([\d]+)/)[1];
     this.state = {
       images: [],
@@ -55,7 +59,7 @@ class App extends React.Component {
     });
   }
 
-  handleRightClick(event){
+  handleRightClick(event) {
     event.preventDefault();
     let current = this.state.current;
     let next = current < this.state.images.length - 1 ? current + 1 : 0;
@@ -64,21 +68,22 @@ class App extends React.Component {
     });
   }
 
+  handleThumbnailClick(event) {
+    event.preventDefault();
+    this.setState({
+      current: parseInt(event.target.getAttribute('data-idx'),10)
+    });
+  }
+
   render() {
-
-    // const images = this.state.images.map( image => {
-    //   return (
-    //     <Img src={image.image_url} />
-    //   );
-    // });
-
     return (
       <div>
         <Carousel 
           images={this.state.images} 
           current={this.state.current} 
-          next={this.handleRightClick.bind(this)} 
-          previous={this.handleLeftClick.bind(this)} 
+          next={this.handleRightClick} 
+          previous={this.handleLeftClick} 
+          thumbnails={this.handleThumbnailClick} 
         />
         {/* {images} */}
       </div>
