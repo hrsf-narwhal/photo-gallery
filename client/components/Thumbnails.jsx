@@ -41,7 +41,6 @@ const Thumbnails = (props) => {
 		const sizes = ['/50x50xWidthHeight', '/100x100xWidthHeight', '/150x150xWidthHeight'];
 		const src = url[1] + sizes[0] + url[2];
 		const srcset = sizes.map( (size, i) => url[1] + size + url[2] + ' ' + (i+1) + 'x').join(', ');
-		console.log(srcset);
 		return (
 			<Thumbnail key={i} onClick={(e) => props.action(e)}>
 				<Img src={src} srcSet={srcset} data-idx={i} className={props.current === i ? 'current' : null} />
