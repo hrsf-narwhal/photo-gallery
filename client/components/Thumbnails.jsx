@@ -26,6 +26,12 @@ const Thumbnail = styled.li`
 const Img = styled.img`
 	height: auto;
 	max-width: 100%;
+	opacity: 0.5;
+	transition: 0.2s opacity ease-in-out;
+
+	&.current, &:hover {
+		opacity: 1;
+	}
 `;
 
 const Thumbnails = (props) => {
@@ -38,7 +44,7 @@ const Thumbnails = (props) => {
 		console.log(srcset);
 		return (
 			<Thumbnail key={i} onClick={(e) => props.action(e)}>
-				<Img src={src} srcSet={srcset} data-idx={i} />
+				<Img src={src} srcSet={srcset} data-idx={i} className={props.current === i ? 'current' : null} />
 			</Thumbnail>
 		);
 	});
