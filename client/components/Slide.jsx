@@ -56,7 +56,6 @@ class Slide extends React.Component {
 	componentDidMount() {
 		const slide = document.getElementById('carousel');
 		this.orientation = this.getOrientation( carousel.offsetWidth, carousel.offsetHeight );
-		console.log(this.orientation);
 	}
 
 	componentDidUpdate() {

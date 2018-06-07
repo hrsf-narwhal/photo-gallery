@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Arrow from './Arrow.jsx';
 import Slide from './Slide.jsx';
 import Thumbnails from './Thumbnails.jsx';
+import Zoom from './Zoom.jsx';
 
 const Container = styled.div`
   background-color: #f5f5f5;
@@ -34,6 +35,7 @@ const Carousel = (props) => {
       <Arrow className="arrow-previous" action={(e) => props.previous(e)} glyph="-" />
       <Arrow className="arrow-next" action={(e) => props.next(e)} glyph="+" />
       <Thumbnails images={props.images} current={props.current} action={props.thumbnails} />
+      <Zoom images={props.images} current={props.current} />
     </Container>
   );
 }
