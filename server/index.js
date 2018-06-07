@@ -20,10 +20,23 @@ app.use(express.json());
 const pool = mysql.createPool(mysqlConfig);
 
 app.get('/images/:pid', (req, res) => {
-	const query = `SELECT image_url FROM images WHERE product_id='${req.params.pid}'`;
+	const query = `SELECT image_url FROM images WHERE product_id='${req.params.pid} ORDER BY image_name ASC'`;
 	pool.getConnection((err, connection) => {
 		connection.query(query, (err, results) => {
 			if (err) throw err;
+
+			// Sort here on the server, because the MySQL query 
+			// is somehow returning an array out-of-order
+			results = results.sort( (a, b) => {
+				if ( a.image_url < b.image_url ) {
+					return -1;
+				} 
+				if ( a.image_url > b.image_url ) {
+					return 1;
+				} 
+				return 0;
+			});
+
 			res.status(200).json( results );
 			connection.release();
 		});
