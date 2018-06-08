@@ -49,23 +49,21 @@ class App extends React.Component {
   }
 
   calcThumbnailPosition(currentIndex) {
-
     const div = document.getElementById('thumbnailsDiv');
-    const divL = div.offsetLeft;
-    const divR = divL + div.offsetWidth;
-
     const ul = document.getElementById('thumbnailsUl');
-
     const left = -(currentIndex * 54);
-    const min = (divR - divL) - ul.scrollWidth;
+    const idealPosition = div.offsetWidth/2 - 54/2;
+    const position = idealPosition + left;
+    const positionLimit = -(ul.scrollWidth - div.offsetWidth);
 
-    if ( left < min ) {
-      return min + 'px';
-    } else {
-      return left + 'px';
+    if ( position > 0 ) {
+      return 0;
     }
-
-}
+    if ( position < positionLimit ) {
+      return positionLimit + 'px';
+    }
+    return position + 'px';
+  }
 
   handleLeftClick(event) {
     event.preventDefault();
