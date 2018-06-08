@@ -23,7 +23,8 @@ class App extends React.Component {
     this.pid = window.location.pathname.match(/\/[\w]+\/([\d]+)/)[1];
     this.state = {
       images: [],
-      current: 0
+      current: 0,
+      thumbnailsPos: 0
     }
   }
 
@@ -47,12 +48,30 @@ class App extends React.Component {
     this.fetchImages();
   }
 
+  calcThumbnailPosition(currentIndex) {
+    const div = document.getElementById('thumbnailsDiv');
+    const ul = document.getElementById('thumbnailsUl');
+    const left = -(currentIndex * 54);
+    const idealPosition = div.offsetWidth/2 - 54/2;
+    const position = idealPosition + left;
+    const positionLimit = -(ul.scrollWidth - div.offsetWidth);
+
+    if ( position > 0 ) {
+      return 0;
+    }
+    if ( position < positionLimit ) {
+      return positionLimit + 'px';
+    }
+    return position + 'px';
+  }
+
   handleLeftClick(event) {
     event.preventDefault();
     let current = this.state.current;
     let previous = current > 0 ? current - 1 : this.state.images.length - 1;
     this.setState({
-      current: previous
+      current: previous,
+      thumbnailsPos: this.calcThumbnailPosition(previous)
     });
   }
 
@@ -61,7 +80,8 @@ class App extends React.Component {
     let current = this.state.current;
     let next = current < this.state.images.length - 1 ? current + 1 : 0;
     this.setState({
-      current: next
+      current: next,
+      thumbnailsPos: this.calcThumbnailPosition(next)
     });
   }
 
@@ -70,8 +90,9 @@ class App extends React.Component {
     const idx = parseInt(event.target.getAttribute('data-idx'),10);
     if ( idx !== this.state.current ) {
       this.setState({
-        current: idx
-      });  
+        current: idx,
+        thumbnailsPos: this.calcThumbnailPosition(idx)
+      });
     }
   }
 
@@ -84,8 +105,8 @@ class App extends React.Component {
           next={this.handleRightClick} 
           previous={this.handleLeftClick} 
           thumbnails={this.handleThumbnailClick} 
+          thumbnailsPos={this.state.thumbnailsPos} 
         />
-        {/* {images} */}
       </div>
     )
   } // render
