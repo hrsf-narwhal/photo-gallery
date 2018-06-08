@@ -67,6 +67,17 @@ class App extends React.Component {
 
   handleThumbnailClick(event) {
     event.preventDefault();
+
+    const parentUl = event.target.parentElement.parentElement;
+
+    console.log( 
+      parentUl.offsetLeft, 
+      event.target.offsetLeft, 
+      parentUl.offsetLeft + parentUl.offsetWidth,
+      parentUl.offsetWidth,
+      parentUl.scrollWidth
+    );
+
     const idx = parseInt(event.target.getAttribute('data-idx'),10);
     if ( idx !== this.state.current ) {
       this.setState({

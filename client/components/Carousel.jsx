@@ -34,7 +34,7 @@ const Carousel = (props) => {
       <Slide images={props.images} current={props.current} next={props.next}/>
       <Arrow className="arrow-previous" action={(e) => props.previous(e)} glyph="-" />
       <Arrow className="arrow-next" action={(e) => props.next(e)} glyph="+" />
-      <Thumbnails images={props.images} current={props.current} action={props.thumbnails} />
+      <Thumbnails images={props.images} current={props.current} selectThumbnail={props.thumbnails} />
       <Zoom images={props.images} current={props.current} />
     </Container>
   );

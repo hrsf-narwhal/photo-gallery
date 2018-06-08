@@ -3,13 +3,22 @@ const ReactDOM = require('react-dom');
 
 import styled from 'styled-components';
 
+const ThumbnailsDiv = styled.div`
+	background: rgba(255,0,0,0.15);
+	height: 50px;
+	overflow: hidden;
+	position: absolute; bottom: -54px; left: 0;
+	width: 100%;
+`;
+
 const ThumbnailsUl = styled.ul`
 	font-size: 0;
-	margin: 0; 
+	margin: 0 auto;
+	overflow: hidden;
 	padding: 0;
-	position: absolute; bottom: -54px; left: 0;
+	position: absolute; top: 0; left: 0;
 	text-align: center;
-	width: 100%;
+	white-space: nowrap;
 `;
 
 const Thumbnail = styled.li`
@@ -42,17 +51,23 @@ const Thumbnails = (props) => {
 		const src = url[1] + sizes[0] + url[2];
 		const srcset = sizes.map( (size, i) => url[1] + size + url[2] + ' ' + (i+1) + 'x').join(', ');
 		return (
-			<Thumbnail key={i} onClick={(e) => props.action(e)}>
+			<Thumbnail key={i} onClick={(e) => props.selectThumbnail(e)}>
 				<Img src={src} srcSet={srcset} data-idx={i} className={props.current === i ? 'current' : null} />
 			</Thumbnail>
 		);
 	});
 
+	const leftPos = () => {
+		return -( props.current * 50 ) + 'px';
+	}
+
 	if ( props.images.length > 0 ) {
 		return (
-			<ThumbnailsUl>
-				{thumbnails}
-			</ThumbnailsUl>
+			<ThumbnailsDiv>
+				<ThumbnailsUl style={{ left: leftPos() }}>
+					{thumbnails}
+				</ThumbnailsUl>
+			</ThumbnailsDiv>
 		);
 	}
 	return null;
