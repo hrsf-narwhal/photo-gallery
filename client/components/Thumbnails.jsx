@@ -7,8 +7,8 @@ const ThumbnailsDiv = styled.div`
 	background: rgba(255,0,0,0.15);
 	height: 50px;
 	overflow: hidden;
-	position: absolute; bottom: -54px; left: 0;
-	width: 100%;
+	position: absolute; bottom: -54px; left: 54px;
+	width: calc(100% - 108px);
 `;
 
 const ThumbnailsUl = styled.ul`
@@ -59,8 +59,8 @@ const Thumbnails = (props) => {
 
 		if ( props.images.length > 0 ) {
 			return (
-				<ThumbnailsDiv>
-					<ThumbnailsUl style={{ left: props.thumbnailsPos }}>
+				<ThumbnailsDiv id="thumbnailsDiv">
+					<ThumbnailsUl id="thumbnailsUl" style={{ left: props.thumbnailsPos }}>
 						{thumbnails}
 					</ThumbnailsUl>
 				</ThumbnailsDiv>

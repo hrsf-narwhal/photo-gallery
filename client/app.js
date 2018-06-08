@@ -48,20 +48,24 @@ class App extends React.Component {
     this.fetchImages();
   }
 
-  calcThumbnailPosition(event, current) {
+  calcThumbnailPosition(currentIndex) {
 
-    const parentUl = event.target.parentElement.parentElement;
+    const div = document.getElementById('thumbnailsDiv');
+    const divL = div.offsetLeft;
+    const divR = divL + div.offsetWidth;
 
-    console.log( 
-      parentUl.offsetLeft, 
-      event.target.offsetLeft, 
-      parentUl.offsetLeft + parentUl.offsetWidth,
-      parentUl.offsetWidth,
-      parentUl.scrollWidth
-    );
+    const ul = document.getElementById('thumbnailsUl');
 
-    return -(current * 54) + 'px';
-  }
+    const left = -(currentIndex * 54);
+    const min = (divR - divL) - ul.scrollWidth;
+
+    if ( left < min ) {
+      return min + 'px';
+    } else {
+      return left + 'px';
+    }
+
+}
 
   handleLeftClick(event) {
     event.preventDefault();
@@ -69,7 +73,7 @@ class App extends React.Component {
     let previous = current > 0 ? current - 1 : this.state.images.length - 1;
     this.setState({
       current: previous,
-      thumbnailsPos: this.calcThumbnailPosition(event, previous)
+      thumbnailsPos: this.calcThumbnailPosition(previous)
     });
   }
 
@@ -79,7 +83,7 @@ class App extends React.Component {
     let next = current < this.state.images.length - 1 ? current + 1 : 0;
     this.setState({
       current: next,
-      thumbnailsPos: this.calcThumbnailPosition(event, next)
+      thumbnailsPos: this.calcThumbnailPosition(next)
     });
   }
 
@@ -89,7 +93,7 @@ class App extends React.Component {
     if ( idx !== this.state.current ) {
       this.setState({
         current: idx,
-        thumbnailsPos: this.calcThumbnailPosition(event, idx)
+        thumbnailsPos: this.calcThumbnailPosition(idx)
       });
     }
   }
