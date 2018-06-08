@@ -23,7 +23,8 @@ class App extends React.Component {
     this.pid = window.location.pathname.match(/\/[\w]+\/([\d]+)/)[1];
     this.state = {
       images: [],
-      current: 0
+      current: 0,
+      thumbnailsPos: 0
     }
   }
 
@@ -47,26 +48,7 @@ class App extends React.Component {
     this.fetchImages();
   }
 
-  handleLeftClick(event) {
-    event.preventDefault();
-    let current = this.state.current;
-    let previous = current > 0 ? current - 1 : this.state.images.length - 1;
-    this.setState({
-      current: previous
-    });
-  }
-
-  handleRightClick(event) {
-    event.preventDefault();
-    let current = this.state.current;
-    let next = current < this.state.images.length - 1 ? current + 1 : 0;
-    this.setState({
-      current: next
-    });
-  }
-
-  handleThumbnailClick(event) {
-    event.preventDefault();
+  calcThumbnailPosition(event, current) {
 
     const parentUl = event.target.parentElement.parentElement;
 
@@ -78,11 +60,37 @@ class App extends React.Component {
       parentUl.scrollWidth
     );
 
+    return -(current * 54) + 'px';
+  }
+
+  handleLeftClick(event) {
+    event.preventDefault();
+    let current = this.state.current;
+    let previous = current > 0 ? current - 1 : this.state.images.length - 1;
+    this.setState({
+      current: previous,
+      thumbnailsPos: this.calcThumbnailPosition(event, previous)
+    });
+  }
+
+  handleRightClick(event) {
+    event.preventDefault();
+    let current = this.state.current;
+    let next = current < this.state.images.length - 1 ? current + 1 : 0;
+    this.setState({
+      current: next,
+      thumbnailsPos: this.calcThumbnailPosition(event, next)
+    });
+  }
+
+  handleThumbnailClick(event) {
+    event.preventDefault();
     const idx = parseInt(event.target.getAttribute('data-idx'),10);
     if ( idx !== this.state.current ) {
       this.setState({
-        current: idx
-      });  
+        current: idx,
+        thumbnailsPos: this.calcThumbnailPosition(event, idx)
+      });
     }
   }
 
@@ -95,6 +103,7 @@ class App extends React.Component {
           next={this.handleRightClick} 
           previous={this.handleLeftClick} 
           thumbnails={this.handleThumbnailClick} 
+          thumbnailsPos={this.state.thumbnailsPos} 
         />
         {/* {images} */}
       </div>
