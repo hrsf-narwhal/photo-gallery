@@ -4,16 +4,33 @@ const ReactDOM = require('react-dom');
 import styled from 'styled-components';
 
 const Button = styled.button`
-	background-color: orange;
+	background-color: transparent;
 	border: none;
 	border-radius: 3px;
-	color: #ffffff;
+	color: #333333;
 	cursor: pointer;
 	line-height: 2rem;
 	outline: none;
 	margin: 6px;
-	padding: 0 24px;
-	position: absolute; top: 0; right: 0;
+	padding: 0 6px 0 24px;
+	position: absolute; bottom: calc(-2rem - 6px); right: 0;
+
+	& > span {
+		box-sizing: border-box;
+		display: inline-block;
+		margin: 0;
+		overflow: hidden;
+		padding: 4px 4px 4px 6px;
+		position: absolute; top: 0; left: 0;
+		text-align: center;
+		width: 22px; height: 2rem;
+	}
+`;
+
+const Svg = styled.svg`
+	fill: currentColor;
+	height: 100%;
+	width: 100%;
 `;
 
 const Overlay = styled.div`
@@ -77,7 +94,7 @@ class Zoom extends React.Component {
 		if ( this.props.images.length > 0 ) {
 			return (
 				<div>
-					<Button onClick={(e) => this.handleButtonClick(e)}>Zoom</Button>
+					<Button onClick={(e) => this.handleButtonClick(e)}><span><Svg><use xlinkHref="#search-plus"></use></Svg></span> Zoom</Button>
 					<Overlay onClick={(e) => this.handleButtonClick(e)} id="overlay">
 						<Img key={this.props.images[ this.props.current ].image_url} data-src={this.props.images[ this.props.current ].image_url} onLoad={(e) => this.handleImageLoad(e)} />
 					</Overlay>

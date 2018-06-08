@@ -11,7 +11,7 @@ const ThumbnailsContainer = styled.div`
 const ThumbnailsDiv = styled.div`
 	height: 50px;
 	margin: 0 auto;
-	max-width: calc(100% - 108px);
+	max-width: calc(100% - 162px);
 	overflow: hidden;
 	position: relative;
 `;
