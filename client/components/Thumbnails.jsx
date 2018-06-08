@@ -3,12 +3,17 @@ const ReactDOM = require('react-dom');
 
 import styled from 'styled-components';
 
+const ThumbnailsContainer = styled.div`
+	position: absolute; bottom: -54px; left: 0;
+	width: 100%;
+`;
+
 const ThumbnailsDiv = styled.div`
-	background: rgba(255,0,0,0.15);
 	height: 50px;
+	margin: 0 auto;
+	max-width: calc(100% - 108px);
 	overflow: hidden;
-	position: absolute; bottom: -54px; left: 54px;
-	width: calc(100% - 108px);
+	position: relative;
 `;
 
 const ThumbnailsUl = styled.ul`
@@ -59,11 +64,13 @@ const Thumbnails = (props) => {
 
 		if ( props.images.length > 0 ) {
 			return (
-				<ThumbnailsDiv id="thumbnailsDiv">
+				<ThumbnailsContainer>
+				<ThumbnailsDiv id="thumbnailsDiv" style={{ width: (props.images.length * 54) + 'px' }}>
 					<ThumbnailsUl id="thumbnailsUl" style={{ left: props.thumbnailsPos }}>
 						{thumbnails}
 					</ThumbnailsUl>
 				</ThumbnailsDiv>
+				</ThumbnailsContainer>
 			);
 		}
 		return null;
