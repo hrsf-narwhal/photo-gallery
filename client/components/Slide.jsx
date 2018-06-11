@@ -74,10 +74,14 @@ class Slide extends React.Component {
 	}
 
 	render() {
+
 		if ( this.props.images.length > 0 ) {
+			const url = this.props.images[ this.props.current ].image_url.match(/(http:\/\/[^\/]*)(.*)/);
+			const sizes = ['/570x570xLongEdge'];
+			const src = url[1] + sizes[0] + url[2];
 			return (
 				<SlideDiv id="slide" className={this.orientation} onClick={(e) => this.props.next(e)}>
-					<Img key={this.props.images[ this.props.current ].image_url} data-src={this.props.images[ this.props.current ].image_url} className="delay" />
+					<Img key={src} data-src={src} className="delay" />
 				</SlideDiv>
 			);
 		}
