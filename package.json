@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "spec": "jest",
+    "test": "jest --coverage --verbose",
     "build": "webpack -s"
   },
   "dependencies": {
@@ -31,9 +31,11 @@
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.1.0",
+    "jest-styled-components": "^5.0.1",
     "mini-css-extract-plugin": "^0.4.0",
     "react-test-renderer": "^16.4.0",
     "style-loader": "^0.21.0",
@@ -48,6 +50,11 @@
   },
   "bugs": {
     "url": "https://github.com/hrsf-narwhal/photo-gallery/issues"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "homepage": "https://github.com/hrsf-narwhal/photo-gallery#readme"
 }
