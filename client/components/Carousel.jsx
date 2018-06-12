@@ -21,6 +21,7 @@ const Container = styled.div`
     width: 100%;
   }
 `;
+Container.displayName = 'Carousel';
 
 const Carousel = (props) => {
   const slides = props.images.map( image => {

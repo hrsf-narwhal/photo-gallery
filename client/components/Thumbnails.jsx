@@ -7,6 +7,7 @@ const ThumbnailsContainer = styled.div`
 	position: absolute; bottom: -54px; left: 0;
 	width: 100%;
 `;
+ThumbnailsContainer.displayName = "Thumbnails";
 
 const ThumbnailsDiv = styled.div`
 	height: 50px;
@@ -37,6 +38,7 @@ const Thumbnail = styled.li`
 	vertical-align: top;
 	width: 50px; height: 50px;
 `;
+Thumbnail.displayName = 'Thumbnail';
 
 const Img = styled.img`
 	height: auto;
@@ -48,6 +50,7 @@ const Img = styled.img`
 		opacity: 1;
 	}
 `;
+Img.displayName = 'Img';
 
 const Thumbnails = (props) => {
 		const thumbnails = props.images.map( (image, i) => {
