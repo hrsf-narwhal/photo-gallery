@@ -8,7 +8,7 @@ module.exports = {
   entry: './client/manifest.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'main.js'
+    filename: 'photo-gallery.js'
 	},
 	watch: true,
   
@@ -43,7 +43,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: "photo-gallery.css"
     })
 
 
