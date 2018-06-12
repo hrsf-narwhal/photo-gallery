@@ -1,4 +1,6 @@
 .DS_Store
+client/components/__snapshots__
 config
+coverage
 node_modules
 public
