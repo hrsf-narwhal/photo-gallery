@@ -26,12 +26,14 @@ const Button = styled.button`
 		width: 22px; height: 2rem;
 	}
 `;
+Button.displayName = 'ZoomButton';
 
 const Svg = styled.svg`
 	fill: currentColor;
 	height: 100%;
 	width: 100%;
 `;
+Svg.displayName = 'Svg';
 
 const Overlay = styled.div`
 	background-color: rgba(255,255,255,0.95);
@@ -49,6 +51,7 @@ const Overlay = styled.div`
 		width: auto; height: auto;
 	}
 `;
+Overlay.displayName = 'Overlay';
 
 const Img = styled.img`
 	border: 8px solid #ffffff;
@@ -66,6 +69,7 @@ const Img = styled.img`
 		visibility: hidden;
 	}
 `;
+Img.displayName = 'Img';
 
 class Zoom extends React.Component {
 	constructor(props) {

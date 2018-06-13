@@ -24,6 +24,7 @@ const Button = styled.button`
 		left: auto; right: 6px;
 	}
 `;
+Button.displayName = 'Arrow';
 
 const Arrow = ({className, action, glyph}) => {
 	return (

@@ -50,6 +50,7 @@ config
 
 The `database.js` should contain your database credentials, in the format:
 
+**database.js**  
 ```js
 module.exports = {
   user: 'username', 
@@ -58,7 +59,16 @@ module.exports = {
 };
 ```
 
-My AWS bucket is public, so the `aws.js` can be empty, and exists only so that we can avoid File-not-found errors in the component's include.
+And `aws.js` should contain your AWS credentials, in the format:
+
+**aws.js**  
+```js
+{
+  "accessKeyId": "theKey", 
+  "secretAccessKey": "theSecretKey", 
+  "region": "us-west-1"
+}
+```
 
 Seed the database by running the following from the repo:
 

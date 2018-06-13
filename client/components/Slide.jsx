@@ -22,6 +22,7 @@ const SlideDiv = styled.div`
 		width: auto;
 	}
 `;
+SlideDiv.displayName = 'Slide';
 
 const Img = styled.img`
 	display: block;
@@ -35,6 +36,7 @@ const Img = styled.img`
 		visibility: hidden;
 	}
 `;
+Img.displayName = 'Img';
 
 class Slide extends React.Component {
 	constructor(props) {
