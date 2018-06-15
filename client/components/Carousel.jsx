@@ -10,6 +10,7 @@ import Zoom from './Zoom.jsx';
 
 const Container = styled.div`
   background-color: #f5f5f5;
+  margin-bottom: calc(58px + 1.5rem);
   max-width: 100%;
   position: relative;
   width: 570px;
