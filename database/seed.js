@@ -1,17 +1,22 @@
 const path = require('path');
 const url = require('url');
 const mysql = require('mysql');
-const mysqlConfig = require('../config/database.js');
 const AWS = require('aws-sdk');
 const s3ImageSize = require('s3-image-size');
 
-const pool = mysql.createPool(mysqlConfig);
+require('dotenv').config();
+
+const pool = mysql.createPool({
+	user: process.env.DB_USER,
+	database: process.env.DB_NAME
+});
+
 const closePool = () => {
 	console.log('Seeding complete.');
 	pool.end();
 }
 
-AWS.config.loadFromPath(path.resolve(__dirname, '../config/aws.js'));
+AWS.config.credentials = new AWS.SharedIniFileCredentials();
 const s3 = new AWS.S3();
 
 const config = {

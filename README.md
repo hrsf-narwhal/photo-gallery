@@ -40,35 +40,10 @@ npm install
 
 Run MySQL, create a database and user.
 
-In the repo, create a /config folder, containing the following.
+Create a Share Credentials file for AWS:
+https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html
 
-```sh
-config
-  aws.js
-  database.js
-```
-
-The `database.js` should contain your database credentials, in the format:
-
-**database.js**  
-```js
-module.exports = {
-  user: 'username', 
-  password: 'password',
-  database: 'database_name'
-};
-```
-
-And `aws.js` should contain your AWS credentials, in the format:
-
-**aws.js**  
-```js
-{
-  "accessKeyId": "theKey", 
-  "secretAccessKey": "theSecretKey", 
-  "region": "us-west-1"
-}
-```
+Create a `.env` file with environment variables for accessing your database. See `.env.default` for the template.
 
 Seed the database by running the following from the repo:
 

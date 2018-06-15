@@ -8,10 +8,12 @@
   },
   "scripts": {
     "test": "jest --coverage --verbose",
-    "build": "webpack -s"
+    "build": "webpack -s",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "aws-sdk": "^2.249.1",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mysql": "^2.15.0",
     "node-exiftool": "^2.3.0",
@@ -32,7 +34,6 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.1.0",
     "jest-styled-components": "^5.0.1",

@@ -1,4 +1,5 @@
 .DS_Store
+.env
 client/components/__snapshots__
 config
 coverage
