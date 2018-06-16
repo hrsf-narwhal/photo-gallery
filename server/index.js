@@ -16,8 +16,6 @@ const pool = mysql.createPool({
 	database: process.env.DB_NAME
 });
 
-console.log(process.env.DB_USER);
-
 app.get('/images/:pid', (req, res) => {
 	const query = `SELECT image_url FROM images WHERE product_id='${req.params.pid} ORDER BY image_name ASC'`;
 	pool.getConnection((err, connection) => {
