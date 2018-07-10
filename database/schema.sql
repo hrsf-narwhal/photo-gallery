@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS itsy_photos;
-CREATE DATABASE IF NOT EXISTS itsy_photos;
+DROP DATABASE IF EXISTS itsyphotos;
+CREATE DATABASE IF NOT EXISTS itsyphotos;
 
-USE itsy_photos;
+USE itsyphotos;
 
 CREATE TABLE IF NOT EXISTS images (
 	product_id INT NOT NULL,

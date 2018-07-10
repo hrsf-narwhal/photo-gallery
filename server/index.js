@@ -12,8 +12,11 @@ app.use('/listing/:pid', express.static( publicPath ));
 app.use(express.json());
 
 const pool = mysql.createPool({
-	user: process.env.DB_USER,
-	database: process.env.DB_NAME
+	host: process.env.RDS_HOSTNAME,
+	port: process.env.RDS_PORT,
+	user: process.env.RDS_USERNAME,
+	password: process.env.RDS_PASSWORD,
+	database: process.env.RDS_DB_NAME
 });
 
 app.get('/images/:pid', (req, res) => {
@@ -40,5 +43,6 @@ app.get('/images/:pid', (req, res) => {
 	});
 });
 
-const port = 3001;
+// const port = 3001;
+const port = 8081;
 app.listen(port, console.log(`Listening on port ${port}...`));

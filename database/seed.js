@@ -7,8 +7,11 @@ const s3ImageSize = require('s3-image-size');
 require('dotenv').config();
 
 const pool = mysql.createPool({
-	user: process.env.DB_USER,
-	database: process.env.DB_NAME
+	host: 'itsydb.c9wegemcd5kh.us-east-1.rds.amazonaws.com',
+	port: '3306',
+	user: '',
+	password: '',
+	database: ''
 });
 
 const closePool = () => {
